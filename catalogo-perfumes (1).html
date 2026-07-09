@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html lang="pt-PT">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Essência | Catálogo de Perfumes</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#171310;
+    --cream:#f4ede1;
+    --gold:#b8905a;
+    --gold-deep:#8a6a3f;
+    --wine:#5c1f1a;
+    --line: rgba(23,19,16,0.14);
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--ink);
+    color:var(--cream);
+    font-family:'Jost',sans-serif;
+    font-weight:300;
+    letter-spacing:.02em;
+  }
+  h1,h2,h3,.serif{
+    font-family:'Cormorant Garamond',serif;
+    font-weight:500;
+    letter-spacing:.01em;
+  }
+  a{color:inherit;}
+  .wrap{max-width:1180px;margin:0 auto;padding:0 28px;}
+
+  /* HEADER */
+  header{
+    position:sticky;top:0;z-index:50;
+    background:rgba(23,19,16,0.92);
+    backdrop-filter:blur(6px);
+    border-bottom:1px solid rgba(184,144,90,0.25);
+  }
+  .nav{display:flex;align-items:center;justify-content:space-between;padding:16px 0;gap:14px;flex-wrap:wrap;}
+  .logo{font-family:'Cormorant Garamond',serif;font-size:26px;letter-spacing:.12em;text-transform:uppercase;}
+  .logo span{color:var(--gold);}
+  .nav-contacts{display:flex;gap:10px;flex-wrap:wrap;}
+  .nav-pill{
+    display:flex;align-items:center;gap:8px;
+    font-size:13px;letter-spacing:.03em;
+    border:1px solid var(--gold);
+    padding:8px 14px;border-radius:2px;
+    text-decoration:none;
+    transition:background .25s ease;
+    white-space:nowrap;
+  }
+  .nav-pill:hover{background:rgba(184,144,90,0.15);}
+
+  /* HERO */
+  .hero{
+    position:relative;
+    padding:100px 0 80px;
+    text-align:center;
+    overflow:hidden;
+    background:
+      radial-gradient(circle at 50% 0%, rgba(184,144,90,0.16), transparent 60%),
+      var(--ink);
+  }
+  .hero .eyebrow{
+    color:var(--gold);font-size:13px;letter-spacing:.35em;text-transform:uppercase;margin-bottom:22px;
+  }
+  .hero h1{font-size:clamp(42px,7vw,78px);line-height:1.02;margin:0 0 22px;}
+  .hero h1 em{font-style:italic;color:var(--gold);}
+  .hero p{max-width:520px;margin:0 auto 34px;font-size:17px;color:rgba(244,237,225,0.75);}
+  .hero-line{width:1px;height:60px;background:linear-gradient(var(--gold),transparent);margin:0 auto;}
+
+  /* SECTION LABELS */
+  .section-label{
+    display:flex;align-items:baseline;gap:18px;margin:0 0 44px;
+  }
+  .section-label .num{color:var(--gold);font-size:14px;letter-spacing:.2em;}
+  .section-label h2{font-size:clamp(30px,4vw,44px);margin:0;}
+  .section-label .rule{flex:1;height:1px;background:var(--line);}
+
+  section{padding:90px 0;}
+  section.alt{background:#1d1712;}
+
+  .more-note{
+    text-align:center;margin-top:50px;padding-top:36px;border-top:1px solid var(--line);
+    color:rgba(244,237,225,0.75);font-size:15.5px;
+  }
+  .more-note a{color:var(--gold);text-decoration:underline;}
+
+  /* PRODUCT GRID */
+  .grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fill,minmax(230px,1fr));
+    gap:34px;
+  }
+  .card{
+    position:relative;
+    border:1px solid var(--line);
+    padding:34px 22px 26px;
+    text-align:center;
+    transition:transform .35s ease, border-color .35s ease, background .35s ease;
+    background:rgba(244,237,225,0.02);
+  }
+  .card:hover{
+    transform:translateY(-6px);
+    border-color:var(--gold);
+    background:rgba(184,144,90,0.06);
+  }
+  .bottle{width:100%;height:150px;display:flex;align-items:center;justify-content:center;margin-bottom:18px;}
+  .card .brand{font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--gold);margin-bottom:6px;}
+  .card h3{font-size:23px;margin:0 0 4px;}
+  .card .notes{font-size:12.5px;color:rgba(244,237,225,0.55);margin-bottom:10px;min-height:32px;}
+  .card .price{font-family:'Cormorant Garamond',serif;font-size:26px;color:var(--gold);margin-bottom:16px;}
+  .card .cta-row{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;}
+  .card .cta{
+    display:inline-block;font-size:11.5px;letter-spacing:.08em;text-transform:uppercase;
+    border-bottom:1px solid var(--gold);padding-bottom:3px;text-decoration:none;color:var(--cream);
+  }
+  .badge{
+    position:absolute;top:14px;right:14px;
+    background:var(--wine);color:var(--cream);
+    font-size:10px;letter-spacing:.14em;text-transform:uppercase;
+    padding:5px 9px;
+  }
+
+  /* BEST SELLERS */
+  .bestsellers{
+    background:linear-gradient(180deg, #241a12, #171310);
+    border-top:1px solid rgba(184,144,90,0.25);
+    border-bottom:1px solid rgba(184,144,90,0.25);
+  }
+  .bs-intro{max-width:600px;margin:0 auto 50px;text-align:center;}
+  .bs-intro .eyebrow{color:var(--gold);font-size:13px;letter-spacing:.3em;text-transform:uppercase;margin-bottom:16px;}
+  .bs-intro p{color:rgba(244,237,225,0.7);font-size:16px;}
+  .bs-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:30px;}
+  .bs-card{
+    border:1px solid var(--gold);
+    padding:36px 24px 28px;text-align:center;position:relative;
+    background:rgba(184,144,90,0.05);
+  }
+  .bs-card .rank{
+    position:absolute;top:-16px;left:50%;transform:translateX(-50%);
+    background:var(--gold);color:var(--ink);
+    width:32px;height:32px;border-radius:50%;
+    display:flex;align-items:center;justify-content:center;
+    font-family:'Cormorant Garamond',serif;font-weight:600;font-size:16px;
+  }
+  .bs-card .bottle{height:140px;}
+  .bs-card h3{font-size:25px;margin:6px 0 4px;}
+  .bs-card .brand{font-size:11px;color:var(--gold);letter-spacing:.2em;text-transform:uppercase;}
+  .bs-card .price{font-family:'Cormorant Garamond',serif;font-size:24px;color:var(--gold);margin-top:6px;}
+
+  /* PAYMENT */
+  .payment-box{
+    max-width:640px;margin:0 auto;
+    border:1px solid var(--line);
+    padding:34px 30px;text-align:center;
+  }
+  .payment-box .method{
+    display:inline-flex;align-items:center;gap:10px;
+    font-family:'Cormorant Garamond',serif;font-size:24px;
+    border-bottom:1px solid var(--gold);padding-bottom:10px;margin-bottom:18px;
+  }
+  .payment-box .status{
+    display:inline-block;background:var(--wine);color:var(--cream);
+    font-size:11px;letter-spacing:.1em;text-transform:uppercase;
+    padding:4px 10px;margin-left:10px;vertical-align:middle;
+  }
+  .payment-box p{color:rgba(244,237,225,0.75);font-size:15px;margin:0 0 6px;}
+
+  /* CONTACT */
+  .contact{
+    text-align:center;
+  }
+  .contact .eyebrow{color:var(--gold);font-size:13px;letter-spacing:.3em;text-transform:uppercase;margin-bottom:18px;}
+  .contact h2{font-size:clamp(32px,5vw,52px);margin:0 0 18px;}
+  .contact p{max-width:520px;margin:0 auto 36px;color:rgba(244,237,225,0.75);font-size:16px;}
+  .contact-blocks{display:flex;gap:20px;justify-content:center;flex-wrap:wrap;margin-bottom:24px;}
+  .info-block{
+    display:inline-flex;align-items:center;gap:12px;
+    border:1px solid var(--gold);padding:16px 26px;
+  }
+  .info-block .num{font-family:'Cormorant Garamond',serif;font-size:24px;letter-spacing:.03em;}
+  .contact-actions{display:flex;gap:16px;justify-content:center;flex-wrap:wrap;margin-top:10px;}
+  .btn{
+    padding:14px 30px;font-size:13px;letter-spacing:.12em;text-transform:uppercase;text-decoration:none;
+    border:1px solid var(--gold);transition:.25s ease;
+  }
+  .btn.solid{background:var(--gold);color:var(--ink);}
+  .btn.solid:hover{background:var(--gold-deep);}
+  .btn.outline:hover{background:rgba(184,144,90,0.15);}
+  .thanks{margin-top:38px;font-family:'Cormorant Garamond',serif;font-style:italic;font-size:19px;color:var(--gold);}
+
+  /* COMPLAINTS */
+  .complaints{background:#1d1712;}
+  .complaints-box{
+    max-width:640px;margin:0 auto;text-align:center;
+    border:1px dashed var(--gold);padding:40px 30px;
+  }
+  .complaints-box p{color:rgba(244,237,225,0.75);font-size:15px;margin:0 0 24px;}
+
+  footer{
+    padding:30px 0;text-align:center;font-size:12px;letter-spacing:.08em;color:rgba(244,237,225,0.45);
+    border-top:1px solid var(--line);
+  }
+
+  @media(max-width:560px){
+    section{padding:64px 0;}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap nav">
+    <div class="logo">Essência <span>Parfums</span></div>
+    <div class="nav-contacts">
+      <a class="nav-pill" href="https://wa.me/351936805774" target="_blank">📞 936 805 774</a>
+      <a class="nav-pill" href="mailto:essenza968@gmail.com">✉️ essenza968@gmail.com</a>
+    </div>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="wrap">
+    <div class="eyebrow">Catálogo Exclusivo</div>
+    <h1>Perfumes de <em>Assinatura</em><br>para Cada Momento</h1>
+    <p>Uma seleção cuidada das melhores casas de perfumaria do mundo. Contacte-nos e encomende o seu favorito hoje mesmo.</p>
+    <div class="hero-line"></div>
+  </div>
+</section>
+
+<section id="colecao">
+  <div class="wrap">
+    <div class="section-label">
+      <span class="num">01</span>
+      <h2>A Coleção</h2>
+      <div class="rule"></div>
+    </div>
+
+    <div class="grid">
+
+      <div class="card">
+        <div class="badge">Mais Vendido</div>
+        <div class="bottle"><svg width="70" height="140" viewBox="0 0 70 140"><rect x="24" y="4" width="22" height="14" rx="2" fill="#b8905a"/><rect x="18" y="20" width="34" height="16" rx="3" fill="#3a2e22"/><path d="M14 40 h42 a4 4 0 0 1 4 4 v82 a6 6 0 0 1 -6 6 h-38 a6 6 0 0 1 -6 -6 v-82 a4 4 0 0 1 4 -4 z" fill="#171310" stroke="#b8905a" stroke-width="1.5"/><rect x="18" y="60" width="34" height="46" fill="#8a6a3f" opacity="0.35"/></svg></div>
+        <div class="brand">Jean Paul Gaultier</div>
+        <h3>Le Male</h3>
+        <div class="notes">Baunilha · Lavanda · Menta</div>
+        <div class="price">75€</div>
+        <div class="cta-row">
+          <a class="cta" href="mailto:essenza968@gmail.com?subject=Encomenda%20-%20Jean%20Paul%20Gaultier%20Le%20Male&body=Ol%C3%A1%2C%20gostaria%20de%20encomendar%20o%20Jean%20Paul%20Gaultier%20Le%20Male%20(75%E2%82%AC).">E-mail</a>
+          <a class="cta" href="https://wa.me/351936805774?text=Ol%C3%A1!%20Tenho%20interesse%20no%20Jean%20Paul%20Gaultier%20Le%20Male%20(75%E2%82%AC)" target="_blank">WhatsApp</a>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="badge">Mais Vendido</div>
+        <div class="bottle"><svg width="70" height="140" viewBox="0 0 70 140"><rect x="26" y="2" width="18" height="12" fill="#5c1f1a"/><path d="M20 14 h30 v10 h-30z" fill="#3a2e22"/><path d="M16 24 h38 v96 a6 6 0 0 1 -6 6 h-26 a6 6 0 0 1 -6 -6 z" fill="#171310" stroke="#5c1f1a" stroke-width="1.5"/><circle cx="35" cy="70" r="16" fill="#5c1f1a" opacity="0.4"/></svg></div>
+        <div class="brand">Dior</div>
+        <h3>Sauvage</h3>
+        <div class="notes">Bergamota · Pimenta · Âmbar</div>
+        <div class="price">75€</div>
+        <div class="cta-row">
+          <a class="cta" href="mailto:essenza968@gmail.com?subject=Encomenda%20-%20Dior%20Sauvage&body=Ol%C3%A1%2C%20gostaria%20de%20encomendar%20o%20Dior%20Sauvage%20(75%E2%82%AC).">E-mail</a>
+          <a class="cta" href="https://wa.me/351936805774?text=Ol%C3%A1!%20Tenho%20interesse%20no%20Dior%20Sauvage%20(75%E2%82%AC)" target="_blank">WhatsApp</a>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="badge">Mais Vendido</div>
+        <div class="bottle"><svg width="70" height="140" viewBox="0 0 70 140"><rect x="22" y="0" width="26" height="10" fill="#171310"/><rect x="26" y="10" width="18" height="14" fill="#b8905a"/><path d="M12 26 h46 a4 4 0 0 1 4 4 v92 a8 8 0 0 1 -8 8 h-38 a8 8 0 0 1 -8 -8 v-92 a4 4 0 0 1 4 -4z" fill="#231b14" stroke="#b8905a" stroke-width="1.5"/><rect x="18" y="46" width="34" height="60" fill="#000" opacity="0.3"/></svg></div>
+        <div class="brand">Versace</div>
+        <h3>Eros</h3>
+        <div class="notes">Menta · Maçã Verde · Baunilha</div>
+        <div class="price">75€</div>
+        <div class="cta-row">
+          <a class="cta" href="mailto:essenza968@gmail.com?subject=Encomenda%20-%20Versace%20Eros&body=Ol%C3%A1%2C%20gostaria%20de%20encomendar%20o%20Versace%20Eros%20(75%E2%82%AC).">E-mail</a>
+          <a class="cta" href="https://wa.me/351936805774?text=Ol%C3%A1!%20Tenho%20interesse%20no%20Versace%20Eros%20(75%E2%82%AC)" target="_blank">WhatsApp</a>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="badge">Mais Vendido</div>
+        <div class="bottle"><svg width="70" height="140" viewBox="0 0 70 140"><rect x="25" y="2" width="20" height="12" fill="#2a4d5c"/><path d="M18 14 h34 v14 h-34z" fill="#3a2e22"/><path d="M14 28 h42 v100 a6 6 0 0 1 -6 6 h-30 a6 6 0 0 1 -6 -6z" fill="#171310" stroke="#2a4d5c" stroke-width="1.5"/><rect x="18" y="50" width="34" height="70" fill="#2a4d5c" opacity="0.3"/></svg></div>
+        <div class="brand">Ralph Lauren</div>
+        <h3>Polo Blue</h3>
+        <div class="notes">Melão · Erva-doce · Almíscar</div>
+        <div class="price">75€</div>
+        <div class="cta-row">
+          <a class="cta" href="mailto:essenza968@gmail.com?subject=Encomenda%20-%20Polo%20Blue&body=Ol%C3%A1%2C%20gostaria%20de%20encomendar%20o%20Polo%20Blue%20(75%E2%82%AC).">E-mail</a>
+          <a class="cta" href="https://wa.me/351936805774?text=Ol%C3%A1!%20Tenho%20interesse%20no%20Polo%20Blue%20(75%E2%82%AC)" target="_blank">WhatsApp</a>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="bottle"><svg width="70" height="140" viewBox="0 0 70 140"><rect x="24" y="2" width="22" height="12" fill="#171310"/><path d="M18 14 h34 v12 h-34z" fill="#8a6a3f"/><path d="M12 26 h46 v96 a10 10 0 0 1 -10 10 h-26 a10 10 0 0 1 -10 -10z" fill="#1d1712" stroke="#8a6a3f" stroke-width="1.5"/></svg></div>
+        <div class="brand">Paco Rabanne</div>
+        <h3>Invictus</h3>
+        <div class="notes">Toranja · Água Marinha · Madeiras</div>
+        <div class="price">60€</div>
+        <div class="cta-row">
+          <a class="cta" href="mailto:essenza968@gmail.com?subject=Encomenda%20-%20Paco%20Rabanne%20Invictus&body=Ol%C3%A1%2C%20gostaria%20de%20encomendar%20o%20Paco%20Rabanne%20Invictus%20(60%E2%82%AC).">E-mail</a>
+          <a class="cta" href="https://wa.me/351936805774?text=Ol%C3%A1!%20Tenho%20interesse%20no%20Paco%20Rabanne%20Invictus%20(60%E2%82%AC)" target="_blank">WhatsApp</a>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="bottle"><svg width="70" height="140" viewBox="0 0 70 140"><rect x="27" y="4" width="16" height="10" fill="#b8905a"/><path d="M16 14 h38 v100 a12 12 0 0 1 -12 12 h-14 a12 12 0 0 1 -12 -12z" fill="#171310" stroke="#b8905a" stroke-width="1.5"/><rect x="20" y="34" width="30" height="6" fill="#b8905a" opacity="0.5"/></svg></div>
+        <div class="brand">Giorgio Armani</div>
+        <h3>Acqua di Giò</h3>
+        <div class="notes">Notas Marinhas · Jasmim · Almíscar</div>
+        <div class="price">58€</div>
+        <div class="cta-row">
+          <a class="cta" href="mailto:essenza968@gmail.com?subject=Encomenda%20-%20Acqua%20di%20Gi%C3%B2&body=Ol%C3%A1%2C%20gostaria%20de%20encomendar%20o%20Acqua%20di%20Gi%C3%B2%20(58%E2%82%AC).">E-mail</a>
+          <a class="cta" href="https://wa.me/351936805774?text=Ol%C3%A1!%20Tenho%20interesse%20no%20Acqua%20di%20Gi%C3%B2%20(58%E2%82%AC)" target="_blank">WhatsApp</a>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="bottle"><svg width="70" height="140" viewBox="0 0 70 140"><rect x="22" y="0" width="26" height="14" fill="#5c1f1a"/><path d="M14 14 h42 v106 a8 8 0 0 1 -8 8 h-26 a8 8 0 0 1 -8 -8z" fill="#171310" stroke="#5c1f1a" stroke-width="1.5"/><circle cx="35" cy="60" r="14" fill="none" stroke="#5c1f1a" stroke-width="1.5"/></svg></div>
+        <div class="brand">Carolina Herrera</div>
+        <h3>212 VIP</h3>
+        <div class="notes">Champanhe · Rum · Baunilha</div>
+        <div class="price">62€</div>
+        <div class="cta-row">
+          <a class="cta" href="mailto:essenza968@gmail.com?subject=Encomenda%20-%20212%20VIP&body=Ol%C3%A1%2C%20gostaria%20de%20encomendar%20o%20212%20VIP%20(62%E2%82%AC).">E-mail</a>
+          <a class="cta" href="https://wa.me/351936805774?text=Ol%C3%A1!%20Tenho%20interesse%20no%20212%20VIP%20(62%E2%82%AC)" target="_blank">WhatsApp</a>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="bottle"><svg width="70" height="140" viewBox="0 0 70 140"><rect x="26" y="2" width="18" height="12" fill="#171310"/><path d="M18 14 h34 v108 a10 10 0 0 1 -10 10 h-14 a10 10 0 0 1 -10 -10z" fill="#2a2a2a" stroke="#b8905a" stroke-width="1.5"/></svg></div>
+        <div class="brand">Azzaro</div>
+        <h3>Chrome</h3>
+        <div class="notes">Cítricos · Notas Aquáticas · Amadeirado</div>
+        <div class="price">55€</div>
+        <div class="cta-row">
+          <a class="cta" href="mailto:essenza968@gmail.com?subject=Encomenda%20-%20Azzaro%20Chrome&body=Ol%C3%A1%2C%20gostaria%20de%20encomendar%20o%20Azzaro%20Chrome%20(55%E2%82%AC).">E-mail</a>
+          <a class="cta" href="https://wa.me/351936805774?text=Ol%C3%A1!%20Tenho%20interesse%20no%20Azzaro%20Chrome%20(55%E2%82%AC)" target="_blank">WhatsApp</a>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="bottle"><svg width="70" height="140" viewBox="0 0 70 140"><rect x="24" y="4" width="22" height="10" fill="#b8905a"/><path d="M16 14 h38 v104 a10 10 0 0 1 -10 10 h-18 a10 10 0 0 1 -10 -10z" fill="#171310" stroke="#b8905a" stroke-width="1.5"/><path d="M20 40 l30 0 -15 20z" fill="#b8905a" opacity="0.4"/></svg></div>
+        <div class="brand">Montblanc</div>
+        <h3>Legend</h3>
+        <div class="notes">Bergamota · Lavanda · Coumarina</div>
+        <div class="price">65€</div>
+        <div class="cta-row">
+          <a class="cta" href="mailto:essenza968@gmail.com?subject=Encomenda%20-%20Montblanc%20Legend&body=Ol%C3%A1%2C%20gostaria%20de%20encomendar%20o%20Montblanc%20Legend%20(65%E2%82%AC).">E-mail</a>
+          <a class="cta" href="https://wa.me/351936805774?text=Ol%C3%A1!%20Tenho%20interesse%20no%20Montblanc%20Legend%20(65%E2%82%AC)" target="_blank">WhatsApp</a>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="bottle"><svg width="70" height="140" viewBox="0 0 70 140"><rect x="25" y="2" width="20" height="12" fill="#3a2e22"/><path d="M17 14 h36 v106 a8 8 0 0 1 -8 8 h-20 a8 8 0 0 1 -8 -8z" fill="#171310" stroke="#3a2e22" stroke-width="1.5"/></svg></div>
+        <div class="brand">Hugo Boss</div>
+        <h3>Bottled</h3>
+        <div class="notes">Maçã · Canela · Sândalo</div>
+        <div class="price">60€</div>
+        <div class="cta-row">
+          <a class="cta" href="mailto:essenza968@gmail.com?subject=Encomenda%20-%20Hugo%20Boss%20Bottled&body=Ol%C3%A1%2C%20gostaria%20de%20encomendar%20o%20Hugo%20Boss%20Bottled%20(60%E2%82%AC).">E-mail</a>
+          <a class="cta" href="https://wa.me/351936805774?text=Ol%C3%A1!%20Tenho%20interesse%20no%20Hugo%20Boss%20Bottled%20(60%E2%82%AC)" target="_blank">WhatsApp</a>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="bottle"><svg width="70" height="140" viewBox="0 0 70 140"><rect x="26" y="4" width="18" height="10" fill="#2a4d5c"/><path d="M18 14 h34 v104 a10 10 0 0 1 -10 10 h-14 a10 10 0 0 1 -10 -10z" fill="#171310" stroke="#2a4d5c" stroke-width="1.5"/></svg></div>
+        <div class="brand">Calvin Klein</div>
+        <h3>CK One</h3>
+        <div class="notes">Bergamota · Chá Verde · Almíscar</div>
+        <div class="price">58€</div>
+        <div class="cta-row">
+          <a class="cta" href="mailto:essenza968@gmail.com?subject=Encomenda%20-%20CK%20One&body=Ol%C3%A1%2C%20gostaria%20de%20encomendar%20o%20CK%20One%20(58%E2%82%AC).">E-mail</a>
+          <a class="cta" href="https://wa.me/351936805774?text=Ol%C3%A1!%20Tenho%20interesse%20no%20CK%20One%20(58%E2%82%AC)" target="_blank">WhatsApp</a>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="more-note">
+      Não encontrou o perfume que procura? Temos muito mais variedade disponível — entre em contacto por
+      <a href="mailto:essenza968@gmail.com">e-mail</a> ou pelo telefone <a href="tel:+351936805774">936 805 774</a> e ajudamos a encontrar.
+    </div>
+  </div>
+</section>
+
+<section class="bestsellers" id="mais-vendidos">
+  <div class="wrap">
+    <div class="bs-intro">
+      <div class="eyebrow">Os Preferidos dos Clientes</div>
+      <h2 class="serif" style="font-size:clamp(30px,4vw,44px);margin:0 0 14px;">Os Mais Vendidos</h2>
+      <p>Estes são os quatro perfumes mais pedidos no nosso catálogo — escolhas seguras para presentear ou para uso diário.</p>
+    </div>
+
+    <div class="bs-grid">
+      <div class="bs-card">
+        <div class="rank">1</div>
+        <div class="bottle"><svg width="60" height="120" viewBox="0 0 70 140"><rect x="24" y="4" width="22" height="14" rx="2" fill="#b8905a"/><rect x="18" y="20" width="34" height="16" rx="3" fill="#3a2e22"/><path d="M14 40 h42 a4 4 0 0 1 4 4 v82 a6 6 0 0 1 -6 6 h-38 a6 6 0 0 1 -6 -6 v-82 a4 4 0 0 1 4 -4 z" fill="#171310" stroke="#b8905a" stroke-width="1.5"/></svg></div>
+        <div class="brand">Jean Paul Gaultier</div>
+        <h3>Le Male</h3>
+        <div class="price">75€</div>
+      </div>
+      <div class="bs-card">
+        <div class="rank">2</div>
+        <div class="bottle"><svg width="60" height="120" viewBox="0 0 70 140"><rect x="26" y="2" width="18" height="12" fill="#5c1f1a"/><path d="M20 14 h30 v10 h-30z" fill="#3a2e22"/><path d="M16 24 h38 v96 a6 6 0 0 1 -6 6 h-26 a6 6 0 0 1 -6 -6 z" fill="#171310" stroke="#5c1f1a" stroke-width="1.5"/></svg></div>
+        <div class="brand">Dior</div>
+        <h3>Sauvage</h3>
+        <div class="price">75€</div>
+      </div>
+      <div class="bs-card">
+        <div class="rank">3</div>
+        <div class="bottle"><svg width="60" height="120" viewBox="0 0 70 140"><rect x="22" y="0" width="26" height="10" fill="#171310"/><rect x="26" y="10" width="18" height="14" fill="#b8905a"/><path d="M12 26 h46 a4 4 0 0 1 4 4 v92 a8 8 0 0 1 -8 8 h-38 a8 8 0 0 1 -8 -8 v-92 a4 4 0 0 1 4 -4z" fill="#231b14" stroke="#b8905a" stroke-width="1.5"/></svg></div>
+        <div class="brand">Versace</div>
+        <h3>Eros</h3>
+        <div class="price">75€</div>
+      </div>
+      <div class="bs-card">
+        <div class="rank">4</div>
+        <div class="bottle"><svg width="60" height="120" viewBox="0 0 70 140"><rect x="25" y="2" width="20" height="12" fill="#2a4d5c"/><path d="M18 14 h34 v14 h-34z" fill="#3a2e22"/><path d="M14 28 h42 v100 a6 6 0 0 1 -6 6 h-30 a6 6 0 0 1 -6 -6z" fill="#171310" stroke="#2a4d5c" stroke-width="1.5"/></svg></div>
+        <div class="brand">Ralph Lauren</div>
+        <h3>Polo Blue</h3>
+        <div class="price">75€</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="pagamento">
+  <div class="wrap">
+    <div class="section-label">
+      <span class="num">02</span>
+      <h2>Pagamento</h2>
+      <div class="rule"></div>
+    </div>
+    <div class="payment-box">
+      <div class="method">MB WAY <span class="status">Temporariamente Indisponível</span></div>
+      <p>De momento estamos com problemas técnicos no MB WAY.</p>
+      <p>Para finalizar a sua encomenda, por favor entre em contacto por e-mail (essenza968@gmail.com) ou telefone (936 805 774) e combinamos o pagamento consigo.</p>
+    </div>
+  </div>
+</section>
+
+<section class="contact" id="contacto">
+  <div class="wrap">
+    <div class="eyebrow">Fale Connosco</div>
+    <h2>Pronto para Escolher o Seu Perfume?</h2>
+    <p>Entre em contacto por telefone, WhatsApp ou e-mail para tirar dúvidas, confirmar disponibilidade e fazer a sua encomenda.</p>
+
+    <div class="contact-blocks">
+      <div class="info-block">📞 <span class="num">936 805 774</span></div>
+      <div class="info-block">✉️ <span class="num" style="font-size:19px;">essenza968@gmail.com</span></div>
+    </div>
+
+    <div class="contact-actions">
+      <a class="btn solid" href="https://wa.me/351936805774" target="_blank">Contactar via WhatsApp</a>
+      <a class="btn outline" href="mailto:essenza968@gmail.com">Enviar E-mail</a>
+      <a class="btn outline" href="tel:+351936805774">Ligar Agora</a>
+    </div>
+
+    <div class="thanks">Obrigado pela sua preferência.</div>
+  </div>
+</section>
+
+<section class="complaints" id="reclamacoes">
+  <div class="wrap">
+    <div class="section-label">
+      <span class="num">03</span>
+      <h2>Reclamações</h2>
+      <div class="rule"></div>
+    </div>
+    <div class="complaints-box">
+      <p>Se teve algum problema com a sua encomenda ou com o nosso atendimento, queremos saber e resolver o mais rápido possível. Escreva-nos com o seu nome, o produto em causa e uma descrição da situação.</p>
+      <a class="btn solid" href="mailto:essenza968@gmail.com?subject=Reclama%C3%A7%C3%A3o&body=Nome%3A%0AProduto%3A%0ADescri%C3%A7%C3%A3o%20da%20reclama%C3%A7%C3%A3o%3A">Fazer Reclamação por E-mail</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">© 2026 Essência Parfums · Catálogo para encomendas por contacto direto</div>
+</footer>
+
+</body>
+</html>
